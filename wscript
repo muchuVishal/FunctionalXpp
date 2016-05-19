@@ -34,13 +34,10 @@ def global_env(ctx):
                            ctx.env.CATCH_PATH[0]
     )
 
-def configure_gcc(conf):
-    #conf.find_program('g++', var = 'CXX', mandator = True)
-    #conf.CXX = "g++"
-    #conf.load('compiler_cxx')
-    #conf.find_program('gcc', var = 'C', mandator = True)
-    conf.C = "gcc"
-    conf.load('compiler_c')
+def configure(conf):
+    #conf.find_program('g++', var = 'CXX', mandatory = True)
+    conf.CXX = "/usr/bin/g++"
+    conf.load('compiler_cxx')
     global_env(conf)
     conf.env.append_unique('STLIB', 'stdc++')
     conf.env.append_unique('LDFLAGS_N', 'stdc++')
@@ -113,7 +110,10 @@ def options(opt):
     )
 
 
-def configure(conf):
+#def configure(conf):
+    #configure_gcc(conf)
+
+def bconf(conf):
     from waflib.Tools.compiler_cxx import cxx_compiler
     cxx_compiler['linux'] = ['gxx', 'clangxx']
     conf.load('compiler_cxx')

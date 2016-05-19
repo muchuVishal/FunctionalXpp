@@ -27,7 +27,7 @@ TEST_CASE("Database Table typed using a parameter pack", "[DatabaseTable]") {
       uint i = 0;
       DatabaseTable< double, int, std::string > dbt("test");
       while(res->next()){
-        auto tup = dbt.read(res);
+        auto tup = dbt.readRow(res);
         REQUIRE( std::get<0>(tup) == (double) i);
         REQUIRE( std::get<1>(tup) == (int) i);
         REQUIRE( std::get<2>(tup) == wordyInteger(i));

@@ -18,9 +18,8 @@ class DatabaseTable {
   static constexpr int ncol() {return std::tuple_size<RowType>::value;}
   std::vector<RowType> const& data() {return _data;}
 
-
   template<class ResType>
-  RowType read(ResType const res) {
+    RowType readRow(ResType const res) {
     return getTupleValue<ResType, Args...>(res);
   }
 
